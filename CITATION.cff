@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite this software release and the associated publication."
+title: "SWOT Reach-Adaptive Quantile Window Filter"
+type: software
+authors:
+  - family-names: "Wilkerson"
+    given-names: "Trevor"
+version: 0.1.0
+date-released: 2026-08-07
+license: MIT
+repository-code: "https://github.com/tjwilkerson/swot-raqw"
+url: "https://github.com/tjwilkerson/swot-raqw"

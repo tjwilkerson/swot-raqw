@@ -1,0 +1,21 @@
+name: swot-raqw
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12.7
+  - geopandas=1.1.1
+  - matplotlib=3.9.2
+  - netcdf4=1.7.3
+  - numpy=1.26.4
+  - pandas=2.2.2
+  - pyproj=3.7.2
+  - requests=2.32.3
+  - scipy=1.13.1
+  - shapely=2.1.2
+  - statsmodels=0.14.2
+  - pip
+  - pytest
+  - pytest-cov
+  - pip:
+      - earthaccess==0.18.0
+

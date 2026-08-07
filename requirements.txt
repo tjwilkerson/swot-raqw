@@ -1,0 +1,11 @@
+earthaccess==0.18.0
+geopandas==1.1.1
+matplotlib==3.9.2
+netCDF4==1.7.3
+numpy==1.26.4
+pandas==2.2.2
+pyproj==3.7.2
+requests==2.32.3
+scipy==1.13.1
+shapely==2.1.2
+statsmodels==0.14.2

@@ -1,0 +1,52 @@
+# Minimal configuration for retrieving one SWORD reach through Hydrocron.
+# Paths are resolved relative to this file.
+
+[run]
+reach_id = "66220000061"
+year = 2024
+
+[data]
+run_root = "../outputs"
+pixc_short_name = "SWOT_L2_HR_PIXC_D"
+# Version D uses SWORD v17b. Keep this pinned for reproducible geometry and
+# RiverSP width/quality retrieval.
+riversp_collection_name = "SWOT_L2_HR_RiverSP_D"
+# Optional: set projected_crs explicitly, or omit it for automatic local UTM.
+# projected_crs = "EPSG:32718"
+
+[preprocessing]
+hydrocron_window_minutes = 30
+allowed_reach_q = [0, 1]
+width_factor = 1.0
+correct_tides = true
+minimum_reach_coverage = 0.95
+quantile_step = 0.01
+quantile_max_iterations = 10000
+min_points_per_granule = 0
+
+[filter]
+target_coverage = 0.95
+min_files_per_quantile = 5
+band_trim_fraction = 0.05
+mad_epsilon = 1e-12
+universal_k_cap = 8.0
+min_points_after_trim = 10
+min_unique_coordinates = 2
+core_tau_low = 0.10
+core_tau_high = 0.90
+min_core_width = 0.15
+tail_guard = 0.05
+max_core_outside_fraction = 0.10
+max_expand_outside_fraction = 0.20
+max_expand_z_multiplier = 1.75
+max_expand_endpoint_jump = 10.0
+min_expand_score_gain = -0.05
+width_weight = 4.5
+closeness_weight = 2.0
+smoothness_weight = 2.0
+centrality_weight = 1.0
+outside_band_weight = 1.25
+tail_penalty_weight = 0.3
+endpoint_jump_weight = 0.2
+trim_spread_weight = 1.5
+trim_stability_weight = 1.0

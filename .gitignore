@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+
+# Environments and editors
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Credentials
+.netrc
+_netrc
+
+# Scientific inputs and generated outputs
+inputs/
+data/
+outputs/
+.streamlit/secrets.toml
+*.nc
+*.h5
+*.hdf5
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.tif
+*.tiff
