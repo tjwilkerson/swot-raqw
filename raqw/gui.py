@@ -17,6 +17,14 @@ from shapely.geometry import mapping, shape
 from .config import RAQWConfig
 
 
+class EarthdataCredentialError(RuntimeError):
+    """An Earthdata login problem that can be corrected in the GUI."""
+
+    def __init__(self, message: str, guidance: tuple[str, ...]) -> None:
+        super().__init__(message)
+        self.guidance = guidance
+
+
 @contextmanager
 def temporary_earthdata_credentials(
     username: str | None,
@@ -61,6 +69,7 @@ def authenticate_earthdata_for_gui(username: str | None, password: str | None):
     """Authenticate without falling through to a terminal-only prompt."""
 
     import earthaccess
+    from earthaccess.exceptions import LoginAttemptFailure, LoginStrategyUnavailable
 
     has_environment_credentials = bool(
         os.environ.get("EARTHDATA_TOKEN")
@@ -70,7 +79,67 @@ def authenticate_earthdata_for_gui(username: str | None, password: str | None):
         )
     )
     strategy = "environment" if (username and password) or has_environment_credentials else "netrc"
-    return earthaccess.login(strategy=strategy)
+    try:
+        return earthaccess.login(strategy=strategy)
+    except LoginAttemptFailure as error:
+        source = "entered" if username and password else "saved"
+        raise EarthdataCredentialError(
+            f"Earthdata Login did not accept the {source} credentials.",
+            (
+                "Check the username and password, then try again.",
+                "Confirm that the same credentials work at urs.earthdata.nasa.gov.",
+                "If the account was recently created, confirm that its email verification is complete.",
+                "RAQW did not save the password you entered.",
+            ),
+        ) from error
+    except LoginStrategyUnavailable as error:
+        if strategy == "netrc":
+            raise EarthdataCredentialError(
+                "No usable Earthdata credentials were found on this computer.",
+                (
+                    "Enter both the Earthdata username and password in the sidebar, then run again.",
+                    "Alternatively, configure `_netrc` on Windows or `.netrc` on macOS/Linux.",
+                    "Use an Earthdata Login account; Hydrocron access alone does not authenticate PIXC downloads.",
+                ),
+            ) from error
+        raise EarthdataCredentialError(
+            "The saved Earthdata environment credentials are incomplete.",
+            (
+                "Enter both the Earthdata username and password in the sidebar.",
+                "Or correct the `EARTHDATA_USERNAME` and `EARTHDATA_PASSWORD` environment variables.",
+            ),
+        ) from error
+
+
+def validate_earthdata_credential_fields(
+    username: str | None,
+    password: str | None,
+) -> None:
+    """Require a complete credential pair when either GUI field is used."""
+
+    if bool(username) == bool(password):
+        return
+    missing = "password" if username else "username"
+    raise EarthdataCredentialError(
+        f"The Earthdata {missing} is missing.",
+        (
+            "Enter both the Earthdata username and password, or leave both fields blank to use saved credentials.",
+            "RAQW never writes credentials entered in the sidebar to its configuration or outputs.",
+        ),
+    )
+
+
+def display_earthdata_credential_error(st, error: EarthdataCredentialError) -> None:
+    """Render a concise correction path instead of a technical traceback."""
+
+    st.error(f"Earthdata sign-in failed: {error}")
+    st.markdown("**How to fix it:**")
+    for instruction in error.guidance:
+        st.markdown(f"- {instruction}")
+    st.markdown(
+        "[Open NASA Earthdata Login](https://urs.earthdata.nasa.gov/) "
+        "to verify the account or reset the password."
+    )
 
 
 class _LiveLog(io.StringIO):
@@ -336,8 +405,10 @@ def render_app() -> None:
         )
         if st.button("Run RAQW analysis", type="primary"):
             try:
-                if bool(earthdata_username) != bool(earthdata_password):
-                    raise ValueError("Enter both an Earthdata username and password, or neither.")
+                validate_earthdata_credential_fields(
+                    earthdata_username or None,
+                    earthdata_password or None,
+                )
                 nc_paths = None
                 login = True
                 if use_local_pixc:
@@ -417,6 +488,8 @@ def render_app() -> None:
                 )
                 st.session_state["raqw_last_results"] = str(cfg.results_dir)
                 st.success(f"Results written to {cfg.results_dir}")
+            except EarthdataCredentialError as error:
+                display_earthdata_credential_error(st, error)
             except Exception as error:
                 st.exception(error)
 

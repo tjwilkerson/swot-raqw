@@ -4,10 +4,12 @@ import pytest
 from shapely.geometry import LineString
 
 from raqw.gui import (
+    EarthdataCredentialError,
     _format_duration,
     _map_view,
     authenticate_earthdata_for_gui,
     temporary_earthdata_credentials,
+    validate_earthdata_credential_fields,
 )
 
 
@@ -73,3 +75,50 @@ def test_gui_authentication_uses_netrc_when_environment_is_empty(monkeypatch) ->
     authenticate_earthdata_for_gui(None, None)
 
     assert calls == [{"strategy": "netrc"}]
+
+
+def test_rejected_entered_credentials_have_actionable_message(monkeypatch) -> None:
+    from earthaccess.exceptions import LoginAttemptFailure
+
+    monkeypatch.setattr(
+        "earthaccess.login",
+        lambda **kwargs: (_ for _ in ()).throw(LoginAttemptFailure("HTTP 401")),
+    )
+
+    with pytest.raises(EarthdataCredentialError) as caught:
+        authenticate_earthdata_for_gui("scientist", "wrong-password")
+
+    assert "did not accept the entered credentials" in str(caught.value)
+    assert any("urs.earthdata.nasa.gov" in item for item in caught.value.guidance)
+    assert "wrong-password" not in str(caught.value)
+
+
+def test_missing_netrc_has_actionable_message(monkeypatch) -> None:
+    from earthaccess.exceptions import LoginStrategyUnavailable
+
+    monkeypatch.delenv("EARTHDATA_TOKEN", raising=False)
+    monkeypatch.delenv("EARTHDATA_USERNAME", raising=False)
+    monkeypatch.delenv("EARTHDATA_PASSWORD", raising=False)
+    monkeypatch.setattr(
+        "earthaccess.login",
+        lambda **kwargs: (_ for _ in ()).throw(LoginStrategyUnavailable("missing")),
+    )
+
+    with pytest.raises(EarthdataCredentialError) as caught:
+        authenticate_earthdata_for_gui(None, None)
+
+    assert "No usable Earthdata credentials" in str(caught.value)
+    assert any("_netrc" in item for item in caught.value.guidance)
+
+
+@pytest.mark.parametrize(
+    ("username", "password", "missing"),
+    [("scientist", None, "password"), (None, "secret", "username")],
+)
+def test_incomplete_gui_credential_pair_identifies_missing_field(
+    username: str | None,
+    password: str | None,
+    missing: str,
+) -> None:
+    with pytest.raises(EarthdataCredentialError, match=missing):
+        validate_earthdata_credential_fields(username, password)
