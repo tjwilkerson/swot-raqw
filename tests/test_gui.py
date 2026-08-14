@@ -5,12 +5,54 @@ from shapely.geometry import LineString
 
 from raqw.gui import (
     EarthdataCredentialError,
+    PUBLICATION_2024_PROJECTED_CRS,
+    _default_config,
     _format_duration,
     _map_view,
     authenticate_earthdata_for_gui,
     temporary_earthdata_credentials,
     validate_earthdata_credential_fields,
 )
+
+
+def test_gui_defaults_match_executed_publication_parameters() -> None:
+    cfg = _default_config()
+
+    assert PUBLICATION_2024_PROJECTED_CRS == "EPSG:32718"
+    assert cfg.projected_crs is None  # Worldwide-safe automatic projection.
+    assert cfg.hydrocron_window_minutes == 30
+    assert cfg.allowed_reach_q == (0, 1)
+    assert cfg.width_factor == 1.0
+    assert cfg.correct_tides is True
+    assert cfg.minimum_reach_coverage == 0.95
+    assert cfg.quantile_step == 0.01
+    assert cfg.quantile_max_iterations == 10_000
+    assert cfg.min_points_per_granule == 0
+    assert cfg.target_coverage == 0.95
+    assert cfg.min_files_per_quantile == 5
+    assert cfg.band_trim_fraction == 0.05
+    assert cfg.mad_epsilon == 1e-12
+    assert cfg.universal_k_cap == 8.0
+    assert cfg.min_points_after_trim == 10
+    assert cfg.min_unique_coordinates == 2
+    assert cfg.core_tau_low == 0.10
+    assert cfg.core_tau_high == 0.90
+    assert cfg.min_core_width == 0.15
+    assert cfg.tail_guard == 0.05
+    assert cfg.max_core_outside_fraction == 0.10
+    assert cfg.max_expand_outside_fraction == 0.20
+    assert cfg.max_expand_z_multiplier == 1.75
+    assert cfg.max_expand_endpoint_jump == 10.0
+    assert cfg.min_expand_score_gain == -0.05
+    assert cfg.width_weight == 4.5
+    assert cfg.closeness_weight == 2.0
+    assert cfg.smoothness_weight == 2.0
+    assert cfg.centrality_weight == 1.0
+    assert cfg.outside_band_weight == 1.25
+    assert cfg.tail_penalty_weight == 0.3
+    assert cfg.endpoint_jump_weight == 0.2
+    assert cfg.trim_spread_weight == 1.5
+    assert cfg.trim_stability_weight == 1.0
 
 
 def test_temporary_credentials_are_removed(monkeypatch) -> None:

@@ -17,6 +17,15 @@ from shapely.geometry import mapping, shape
 from .config import RAQWConfig
 
 
+PUBLICATION_2024_PROJECTED_CRS = "EPSG:32718"
+
+
+def _default_config() -> RAQWConfig:
+    """Return the single source of truth for GUI analysis defaults."""
+
+    return RAQWConfig(reach_id="0", year=2024, run_root=Path("outputs"))
+
+
 class EarthdataCredentialError(RuntimeError):
     """An Earthdata login problem that can be corrected in the GUI."""
 
@@ -156,88 +165,109 @@ class _LiveLog(io.StringIO):
 
 
 def _configuration_widgets(st) -> dict[str, object]:
+    defaults = _default_config()
     values: dict[str, object] = {}
     with st.expander("Preprocessing parameters", expanded=True):
         first, second, third = st.columns(3)
         values["minimum_reach_coverage"] = first.number_input(
-            "Minimum reach coverage", 0.0, 1.0, 0.95, 0.01
+            "Minimum reach coverage", 0.0, 1.0, defaults.minimum_reach_coverage, 0.01
         )
         values["min_points_per_granule"] = second.number_input(
-            "Minimum PIXC points", 0, 100_000, 0, 1
+            "Minimum PIXC points",
+            0,
+            100_000,
+            defaults.min_points_per_granule,
+            1,
+            help=(
+                "Use 0 to reproduce the executed publication behavior. The historical "
+                "notebook declared 50, but did not enforce that gate."
+            ),
         )
         values["width_factor"] = third.number_input(
-            "Width multiplier", 0.1, 10.0, 1.0, 0.1
+            "Width multiplier", 0.1, 10.0, defaults.width_factor, 0.1
         )
-        values["correct_tides"] = first.checkbox("Apply tide corrections", value=True)
+        values["correct_tides"] = first.checkbox(
+            "Apply tide corrections", value=defaults.correct_tides
+        )
         values["hydrocron_window_minutes"] = second.number_input(
-            "RiverSP match window (minutes)", 1, 1_440, 30, 1
+            "RiverSP match window (minutes)", 1, 1_440, defaults.hydrocron_window_minutes, 1
         )
         values["quantile_step"] = third.number_input(
-            "Quantile step", 0.001, 0.25, 0.01, 0.001, format="%.3f"
+            "Quantile step", 0.001, 0.25, defaults.quantile_step, 0.001, format="%.3f"
         )
-        quality_text = st.text_input("Allowed RiverSP reach_q values", "0,1")
+        values["quantile_max_iterations"] = first.number_input(
+            "Quantile fit maximum iterations",
+            1,
+            1_000_000,
+            defaults.quantile_max_iterations,
+            1_000,
+        )
+        quality_text = st.text_input(
+            "Allowed RiverSP reach_q values",
+            ",".join(str(value) for value in defaults.allowed_reach_q),
+        )
         try:
             values["allowed_reach_q"] = tuple(
                 int(item.strip()) for item in quality_text.split(",") if item.strip()
             )
         except ValueError:
             st.error("RiverSP reach_q values must be comma-separated integers.")
-            values["allowed_reach_q"] = (0, 1)
+            values["allowed_reach_q"] = defaults.allowed_reach_q
 
     with st.expander("Quantile-window parameters", expanded=True):
         first, second, third = st.columns(3)
         values["core_tau_low"] = first.number_input(
-            "Core τ lower bound", 0.0, 1.0, 0.10, 0.01
+            "Core tau lower bound", 0.0, 1.0, defaults.core_tau_low, 0.01
         )
         values["core_tau_high"] = second.number_input(
-            "Core τ upper bound", 0.0, 1.0, 0.90, 0.01
+            "Core tau upper bound", 0.0, 1.0, defaults.core_tau_high, 0.01
         )
         values["min_core_width"] = third.number_input(
-            "Minimum core width", 0.0, 1.0, 0.15, 0.01
+            "Minimum core width", 0.0, 1.0, defaults.min_core_width, 0.01
         )
         values["target_coverage"] = first.number_input(
-            "Reference coverage", 0.0, 1.0, 0.95, 0.01
+            "Reference coverage", 0.0, 1.0, defaults.target_coverage, 0.01
         )
         values["min_files_per_quantile"] = second.number_input(
-            "Minimum files per quantile", 1, 10_000, 5, 1
+            "Minimum files per quantile", 1, 10_000, defaults.min_files_per_quantile, 1
         )
         values["band_trim_fraction"] = third.number_input(
-            "Band trim fraction", 0.0, 1.0, 0.05, 0.01
+            "Band trim fraction", 0.0, 1.0, defaults.band_trim_fraction, 0.01
         )
         values["tail_guard"] = first.number_input(
-            "Tail guard", 0.0, 1.0, 0.05, 0.01
+            "Tail guard", 0.0, 1.0, defaults.tail_guard, 0.01
         )
         values["min_points_after_trim"] = second.number_input(
-            "Minimum retained points", 2, 100_000, 10, 1
+            "Minimum retained points", 2, 100_000, defaults.min_points_after_trim, 1
         )
         values["min_unique_coordinates"] = third.number_input(
-            "Minimum unique coordinates", 2, 100_000, 2, 1
+            "Minimum unique coordinates", 2, 100_000, defaults.min_unique_coordinates, 1
         )
 
     with st.expander("Advanced selection controls"):
-        defaults = {
-            "max_core_outside_fraction": 0.10,
-            "max_expand_outside_fraction": 0.20,
-            "max_expand_z_multiplier": 1.75,
-            "max_expand_endpoint_jump": 10.0,
-            "min_expand_score_gain": -0.05,
-            "universal_k_cap": 8.0,
-            "mad_epsilon": 1e-12,
-            "width_weight": 4.5,
-            "closeness_weight": 2.0,
-            "smoothness_weight": 2.0,
-            "centrality_weight": 1.0,
-            "outside_band_weight": 1.25,
-            "tail_penalty_weight": 0.3,
-            "endpoint_jump_weight": 0.2,
-            "trim_spread_weight": 1.5,
-            "trim_stability_weight": 1.0,
-        }
+        advanced_names = (
+            "max_core_outside_fraction",
+            "max_expand_outside_fraction",
+            "max_expand_z_multiplier",
+            "max_expand_endpoint_jump",
+            "min_expand_score_gain",
+            "universal_k_cap",
+            "mad_epsilon",
+            "width_weight",
+            "closeness_weight",
+            "smoothness_weight",
+            "centrality_weight",
+            "outside_band_weight",
+            "tail_penalty_weight",
+            "endpoint_jump_weight",
+            "trim_spread_weight",
+            "trim_stability_weight",
+        )
         columns = st.columns(3)
-        for index, (name, default) in enumerate(defaults.items()):
+        for index, name in enumerate(advanced_names):
             values[name] = columns[index % 3].number_input(
                 name.replace("_", " ").title(),
-                value=default,
+                value=getattr(defaults, name),
                 format="%.12g",
                 key=f"advanced_{name}",
             )
@@ -327,7 +357,15 @@ def render_app() -> None:
             "RiverSP collection",
             ("SWOT_L2_HR_RiverSP_D", "SWOT_L2_HR_RiverSP_2.0"),
         )
-        projected_crs = st.text_input("Projected CRS (optional)", "").strip() or None
+        projected_crs = st.text_input(
+            "Projected CRS override (optional)",
+            "",
+            help=(
+                "Leave blank for an automatically selected local projected CRS, which is "
+                "appropriate for worldwide use. Enter EPSG:32718 only to reproduce the "
+                "2024 Chile publication projection exactly."
+            ),
+        ).strip() or None
         with st.expander("Offline geometry override"):
             reach_file_text = st.text_input("Local SWORD file (optional)", "").strip()
             reach_layer = st.text_input("Layer name (optional)", "").strip() or None
@@ -339,6 +377,12 @@ def render_app() -> None:
             st.caption("Typed credentials remain in this local app session and are not saved.")
 
     parameters = _configuration_widgets(st)
+    st.info(
+        "The analysis defaults match the executed 2024 workflow. Projection is selected "
+        "automatically for worldwide reaches unless you provide an override; use "
+        f"{PUBLICATION_2024_PROJECTED_CRS} for an exact Chile-study reproduction. "
+        "Minimum PIXC points is 0 because the notebook's declared 50-point gate was inactive."
+    )
     try:
         cfg = RAQWConfig(
             reach_id=reach_id,
