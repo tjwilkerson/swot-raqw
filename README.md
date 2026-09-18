@@ -6,8 +6,8 @@ discovery and pre-screening, geospatial projection, reach-year quantile-slope
 reference fitting, adaptive tau-window selection, retained-point ordinary least
 squares fitting, and RiverSP comparison.
 
-The package implements the workflow accompanying the manuscript *An Open-Source
-SWOT Pixel-Cloud Workflow Improves River Slope Usability at Scale*. It is designed
+The package implements the workflow accompanying the manuscript *Improving River Slope Usability at Scale:
+An Open-Source SWOT Pixel-Cloud Workflow*. It is designed
 to keep acquisition, preprocessing, reference fitting, and application as
 separate, auditable stages.
 
@@ -19,10 +19,12 @@ separate, auditable stages.
 - **Analyze a new reach:** use the Quick start or graphical interface below.
   Keep the publication configuration unchanged when reproducing the paper.
 
-This checkout is being prepared for the manuscript `v1.0.0` release. A tag and
-Zenodo DOI have not yet been created. Validation status and limitations are in
-the reproduction guide; the version-pinned environment is not a guarantee of
-complete end-to-end equivalence to the historical run.
+Version `1.0.0` preserves the software and analysis sources for the 2024
+manuscript analysis. Validation status and known limitations are in the
+[reproduction guide](docs/reproduce_2024.md) and
+[release notes](docs/release_notes_v1.0.0.md). The software DOI will be added
+after Zenodo confirms archival publication. The version-pinned environment
+is not a guarantee of complete end-to-end equivalence to the historical run.
 
 ## Workflow
 

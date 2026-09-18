@@ -9,6 +9,12 @@ figure coverage. Do not tag the current branch tip merely because it is latest.
 
 ## Scientific freeze
 
+The author approved freezing the existing analysis on 2026-09-18 with the
+sign-convention concern documented rather than resolved. Full raw-data
+reproduction and a separate processed-data archive remain outside completed
+validation; see `docs/reproduce_2024.md`. Unchecked items below describe remaining
+work, not additional approval requirements for this authorized software freeze.
+
 - [x] Preserve the executed 2024 behavior (`min_points_per_granule = 0`).
 - [ ] If any scientific parameter changes, document the complete change list,
       regenerate all affected result tables and figures once, and rerun the
@@ -18,11 +24,11 @@ figure coverage. Do not tag the current branch tip merely because it is latest.
 
 ## Repository metadata
 
-- [ ] Confirm the software title and repository name.
+- [x] Confirm the software title and repository name.
 - [x] Retain MIT; identify Trevor Wilkerson as the sole software author.
 - [x] Use `tjwilkerson/swot-raqw`; add manuscript analysis and figure sources.
-- [ ] Add the chosen public repository URL to `pyproject.toml` and `CITATION.cff`.
-- [ ] Set `pyproject.toml`, `raqw/__init__.py`, and `CITATION.cff` to `1.0.0`
+- [x] Add the chosen public repository URL to `pyproject.toml` and `CITATION.cff`.
+- [x] Set `pyproject.toml`, `raqw/__init__.py`, and `CITATION.cff` to `1.0.0`
       only after the scientific freeze is ready; set the actual release date.
 - [ ] Add repository and article identifiers to `CITATION.cff` when available.
 - [ ] Replace submission placeholders in the manuscript Open Research section
@@ -32,7 +38,7 @@ figure coverage. Do not tag the current branch tip merely because it is latest.
 
 - [ ] Create the pinned environment from `environment.yml` on a clean machine.
 - [ ] Run `python -m pip install --no-deps -e .`.
-- [ ] Run `python -m pytest` and confirm all tests pass.
+- [x] Run `python -m pytest`: 31 tests pass; preparation CI passes on Python 3.11/3.12.
 - [ ] Run one documented example from local PIXC data or Earthdata acquisition.
 - [ ] Confirm `raqw apply-reference` reproduces the expected frozen-reference
       behavior for a held-out year.
@@ -74,7 +80,8 @@ figure coverage. Do not tag the current branch tip merely because it is latest.
 
 ## Explicit-commit release commands
 
-After all checks above pass, replace the SHA below with the recorded full hash.
+After documenting the completed checks and accepted limitations, replace the
+SHA below with the recorded full hash.
 These commands are instructions, not evidence that a release has been created.
 
 ```powershell

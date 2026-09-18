@@ -104,19 +104,32 @@ checking historical equivalence. Do not introduce a 50-point gate: the original
 executed run retained 320 successful records below that threshold. The saved
 2024 reference includes the evaluated observations and is not leave-one-out.
 
-## Before calling this the frozen manuscript release
+## Known limitations retained in v1.0.0
 
-- Use **7,214 candidates / 7,149 successful slopes** consistently in manuscript
-  text and tables.
-- Resolve the slope-sign interpretation: the Figure 4 exploratory cell raises
-  a coordinate/sign-convention concern and flips RiverSP signs for display.
-  Reproducing transition counts does not resolve the physical interpretation.
-  Check along-channel orientation against SWORD and RiverSP definitions before
-  describing all sign changes as physical recovery.
-- Archive the processed inputs and exact reach list with version identifiers
-  and checksums, and replace the pending data link above.
-- Finish source/configuration and raw-preprocessing provenance checks; select
-  the final full commit SHA, then publish `v1.0.0` and archive it on Zenodo.
+This release preserves the existing 2024 analysis without changing scientific
+parameters, slope signs, or figure calculations. The author elected to release
+this snapshot with the following limitations documented:
+
+- The authoritative manuscript is *Improving River Slope Usability at Scale:
+  An Open-Source SWOT Pixel-Cloud Workflow*. Its Supporting Information explicitly
+  distinguishes 7,214 candidates, 7,149 successful slopes, and 65 failures, and
+  the main Results section uses 7,149. The abstract and introduction still call
+  7,214 observations valid estimates; that wording needs editorial correction.
+  No manuscript text was changed by the software release.
+- The Figure 4 exploratory cell raises a coordinate/sign-convention concern
+  and flips RiverSP signs for display. Reproducing the transition counts does
+  not resolve their physical interpretation. The concern remains unresolved;
+  v1.0.0 must not be cited as an independent validation of physical recovery.
+- Full raw-PIXC acquisition/preprocessing equivalence, full-population window
+  reselection, and a clean installation of the pinned Conda environment were
+  not established by the reported audit. The audit's scope is stated above.
+- The separate processed-data archive remains pending. The source archive
+  includes the saved run configuration, candidate reach list, input hashes,
+  analysis/figure code, and validation reports, but not the full point tables.
+
+The source tag identifies the immutable software snapshot. A software DOI is
+added to the development documentation after Zenodo archives that tag. See
+[the release checklist](release_checklist.md) for the archival procedure.
 
 Author: Trevor Wilkerson. Software license: MIT. The software citation has one
 author; AI assistance is not listed as a software coauthor.
