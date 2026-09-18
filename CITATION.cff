@@ -5,8 +5,19 @@ type: software
 authors:
   - family-names: "Wilkerson"
     given-names: "Trevor"
-version: 0.1.0
-date-released: 2026-08-07
+version: 1.0.0
+date-released: 2026-09-18
 license: MIT
 repository-code: "https://github.com/tjwilkerson/swot-raqw"
 url: "https://github.com/tjwilkerson/swot-raqw"
+abstract: >-
+  Reach-adaptive quantile-window filtering of SWOT PIXC observations for river
+  slope estimation, with RiverSP comparison and preserved 2024 manuscript
+  analysis and figure sources. Validation scope and known limitations are
+  documented in the release notes.
+keywords:
+  - SWOT
+  - PIXC
+  - river slope
+  - quantile regression
+  - hydrology

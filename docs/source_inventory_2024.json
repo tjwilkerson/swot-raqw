@@ -1,0 +1,205 @@
+[
+  {
+    "path": "quantile_filter_by_reach_and_year_chile_discharge.ipynb",
+    "source_sha256": "c96a50065ca6d76631a8962b42bd69cab15abcfa0764d29e8b134d263d60c104",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "fa5d7f5abb7f6d9a190cbd992c8183b5e13bbf8e12dd2aa5dd9020b5b081f8df",
+    "release_sha256": "16eb330adaa8e5aef2e59fb5b9badf1a5f532446039bd33cf30e10b980569d1d"
+  },
+  {
+    "path": "tau_range_update_experiment.py",
+    "source_sha256": "545cefd32f3281952390a315ade87f1a3f4060006143d878acbd2bd269e24180",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "545cefd32f3281952390a315ade87f1a3f4060006143d878acbd2bd269e24180",
+    "release_sha256": "545cefd32f3281952390a315ade87f1a3f4060006143d878acbd2bd269e24180"
+  },
+  {
+    "path": "tau_range_update_experiment.ipynb",
+    "source_sha256": "a79361522a74eef54f7311f6a09ef2554f250663aaef2605ee2f06b5b9b12830",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "cec17ec2c25a54cff1c2a9defd128a1031325dcf7c0465c3d2012d8982d6cd09",
+    "release_sha256": "1c6bc98647e32d84bd076e75a87bf526dac7181339fab1e0b02ae1c32b96be3f"
+  },
+  {
+    "path": "riversp_updated_filter_comparison.ipynb",
+    "source_sha256": "4cf01c1bfc592205bf8ae81923154e7a4489e5192de1466233301248c9f0a783",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "98f3b43d5a45c7c1fa4df2e45d2b98c22457b76a7c0c39d17e812c664d632981",
+    "release_sha256": "3699aa6106f59a8b86cb7d7c349c952fa47a8d0321262fcdce74d95f8ea44b54"
+  },
+  {
+    "path": "chile_reaches_with_discharge.ipynb",
+    "source_sha256": "3ca45a08bae8ca50e5164dd699ef12361df0d1225d03ad3e271ef425c87203e0",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "b58c019c2f2fcb3ba064c508b7c3ebbd4da298315105b6343f01b376cbca1ee9",
+    "release_sha256": "e532eeaf5544aab03c8ae7ba2734a27c4b0314e5853ba1665fec952acceaf177"
+  },
+  {
+    "path": "pipeline_2024/apply_2024_tau_filter_to_2025.py",
+    "source_sha256": "4d7eab6bd8ac6e29e06cd2e5ee50cdda7ccf5718cbbba2dd523f2460981cced3",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "4d7eab6bd8ac6e29e06cd2e5ee50cdda7ccf5718cbbba2dd523f2460981cced3",
+    "release_sha256": "4d7eab6bd8ac6e29e06cd2e5ee50cdda7ccf5718cbbba2dd523f2460981cced3"
+  },
+  {
+    "path": "pipeline_2024/compare_2025_with_riversp.py",
+    "source_sha256": "fd9d0f28c08eba47b14fd4fc72632852202619ec64f1110ab7a905da598d10bc",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "fd9d0f28c08eba47b14fd4fc72632852202619ec64f1110ab7a905da598d10bc",
+    "release_sha256": "2ad3ad25ff6bdede5752b1608fd1588ec7579fc216f8b8e0e34349020fd5e3da"
+  },
+  {
+    "path": "pipeline_2024/inspect_key_granule_geoid.py",
+    "source_sha256": "72ed7c6c847e9ec252568182c9c1b4fd075cc3f2131056e9ba9eaf570f691759",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "72ed7c6c847e9ec252568182c9c1b4fd075cc3f2131056e9ba9eaf570f691759",
+    "release_sha256": "72ed7c6c847e9ec252568182c9c1b4fd075cc3f2131056e9ba9eaf570f691759"
+  },
+  {
+    "path": "pipeline_2024/make_key_reach_riversp_figure.py",
+    "source_sha256": "98797b26667282be5e22a6f01130b9c47c5270f85c46d9b5edb0ca615e73058b",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "98797b26667282be5e22a6f01130b9c47c5270f85c46d9b5edb0ca615e73058b",
+    "release_sha256": "98797b26667282be5e22a6f01130b9c47c5270f85c46d9b5edb0ca615e73058b"
+  },
+  {
+    "path": "pipeline_2024/paths.py",
+    "source_sha256": "aa9a29216e093bb9d85737e55b75a542b884798ee564fd2dd9f23a225e3f0aa2",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "aa9a29216e093bb9d85737e55b75a542b884798ee564fd2dd9f23a225e3f0aa2",
+    "release_sha256": "aa9a29216e093bb9d85737e55b75a542b884798ee564fd2dd9f23a225e3f0aa2"
+  },
+  {
+    "path": "pipeline_2024/plot_2024_category_residual_boxplots.py",
+    "source_sha256": "4dab44a6a909f3f19c6aa4841f13a2e01768a6d120ad0d2bac4abce10a12cb37",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "4dab44a6a909f3f19c6aa4841f13a2e01768a6d120ad0d2bac4abce10a12cb37",
+    "release_sha256": "4dab44a6a909f3f19c6aa4841f13a2e01768a6d120ad0d2bac4abce10a12cb37"
+  },
+  {
+    "path": "pipeline_2024/plot_2025_comparison.py",
+    "source_sha256": "822cb23b26993caa1be8d67b3514bb6f61d2d0528dd8f55570801495f16cb8b5",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "822cb23b26993caa1be8d67b3514bb6f61d2d0528dd8f55570801495f16cb8b5",
+    "release_sha256": "822cb23b26993caa1be8d67b3514bb6f61d2d0528dd8f55570801495f16cb8b5"
+  },
+  {
+    "path": "pipeline_2024/plot_2025_reach_file_trims.py",
+    "source_sha256": "4f32ae10a7d57c17d727c5b8af6159feaaaf0f8d523b6784e21e38ee18e7dacc",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "4f32ae10a7d57c17d727c5b8af6159feaaaf0f8d523b6784e21e38ee18e7dacc",
+    "release_sha256": "4f32ae10a7d57c17d727c5b8af6159feaaaf0f8d523b6784e21e38ee18e7dacc"
+  },
+  {
+    "path": "pipeline_2024/run_01_reaches_with_discharge.py",
+    "source_sha256": "d6b61ac3f7ee1e2d2b1ed0dfd4bbdddc73f48a05a6896cc0cea52c96ce4458fb",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "d6b61ac3f7ee1e2d2b1ed0dfd4bbdddc73f48a05a6896cc0cea52c96ce4458fb",
+    "release_sha256": "d6b61ac3f7ee1e2d2b1ed0dfd4bbdddc73f48a05a6896cc0cea52c96ce4458fb"
+  },
+  {
+    "path": "pipeline_2024/run_02_preprocess_2024_pixc.py",
+    "source_sha256": "c7de2bf82b1df09b339f982acdfe3fe1c61441f0cccd1ecedcabd6ce738ff09b",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "c7de2bf82b1df09b339f982acdfe3fe1c61441f0cccd1ecedcabd6ce738ff09b",
+    "release_sha256": "c7de2bf82b1df09b339f982acdfe3fe1c61441f0cccd1ecedcabd6ce738ff09b"
+  },
+  {
+    "path": "pipeline_2024/run_04_compare_with_riversp.py",
+    "source_sha256": "c0a64935fe292c7448c459e06eaa829c8cf02e32b3f49766cca5aa94f54048ef",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "c0a64935fe292c7448c459e06eaa829c8cf02e32b3f49766cca5aa94f54048ef",
+    "release_sha256": "c0a64935fe292c7448c459e06eaa829c8cf02e32b3f49766cca5aa94f54048ef"
+  },
+  {
+    "path": "pipeline_2024/RUN_ORDER.py",
+    "source_sha256": "b6661d4c7cdd3ed85175983f67de3b37b369a3a74dccce3323f5d5603550ee71",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "b6661d4c7cdd3ed85175983f67de3b37b369a3a74dccce3323f5d5603550ee71",
+    "release_sha256": "b6661d4c7cdd3ed85175983f67de3b37b369a3a74dccce3323f5d5603550ee71"
+  },
+  {
+    "path": "pipeline_2024/summarize_2024_by_selection_category.py",
+    "source_sha256": "f127718a199de4baf22558f676e2f8132ec72255945cad5ee8c849bca7f48b0c",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "f127718a199de4baf22558f676e2f8132ec72255945cad5ee8c849bca7f48b0c",
+    "release_sha256": "f127718a199de4baf22558f676e2f8132ec72255945cad5ee8c849bca7f48b0c"
+  },
+  {
+    "path": "pipeline_2024/train_tau_filter_2024.py",
+    "source_sha256": "37922708ca57b4992b6a3b96b041cd7b03a96dd45e9a7d8d243a96b67832e154",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "37922708ca57b4992b6a3b96b041cd7b03a96dd45e9a7d8d243a96b67832e154",
+    "release_sha256": "37922708ca57b4992b6a3b96b041cd7b03a96dd45e9a7d8d243a96b67832e154"
+  },
+  {
+    "path": "pipeline_2024/triage_2025_filter_failures.py",
+    "source_sha256": "3948c3dac1f0c2bc40b0d2f717226b659d46ef8ec289cfff9441c43985fffcab",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "3948c3dac1f0c2bc40b0d2f717226b659d46ef8ec289cfff9441c43985fffcab",
+    "release_sha256": "3948c3dac1f0c2bc40b0d2f717226b659d46ef8ec289cfff9441c43985fffcab"
+  },
+  {
+    "path": "pipeline_2024/__init__.py",
+    "source_sha256": "c2b401235edc037bff66ae4e388b1c381ea44b03c9b3cb1d79e80b0ea6e89ddc",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "c2b401235edc037bff66ae4e388b1c381ea44b03c9b3cb1d79e80b0ea6e89ddc",
+    "release_sha256": "c2b401235edc037bff66ae4e388b1c381ea44b03c9b3cb1d79e80b0ea6e89ddc"
+  },
+  {
+    "path": "pipeline_2024/legacy_notebook_code/pixc_quantile_chile_discharge_core.py",
+    "source_sha256": "1028b3805040bfb0de791401016f44c1f6fa476f2929c91ddc62d253d651cc29",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "1028b3805040bfb0de791401016f44c1f6fa476f2929c91ddc62d253d651cc29",
+    "release_sha256": "b49c31732a5911b4956ce1d234b5a37d7e2a4bb0dcb0cc2ad1c35cdd4d5eea15"
+  },
+  {
+    "path": "pipeline_2024/legacy_notebook_code/riversp_updated_filter_comparison.py",
+    "source_sha256": "b44f57dde98012f47e8d1e4ac75d859e3985514ae238f31d720c0b48b13fbe90",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "b44f57dde98012f47e8d1e4ac75d859e3985514ae238f31d720c0b48b13fbe90",
+    "release_sha256": "89547ce30a2022694abadc6c0e186e4ed25718074ebe12499b6c72a5ab92ba42"
+  },
+  {
+    "path": "pipeline_2024/legacy_notebook_code/__init__.py",
+    "source_sha256": "e1ef8baf9f33504afc61e87dd3e8767ded453d288b636f9aa0155b3432ac9047",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "e1ef8baf9f33504afc61e87dd3e8767ded453d288b636f9aa0155b3432ac9047",
+    "release_sha256": "e1ef8baf9f33504afc61e87dd3e8767ded453d288b636f9aa0155b3432ac9047"
+  },
+  {
+    "path": "publication_figs/figure_01_study_domain_and_workflow.ipynb",
+    "source_sha256": "ae30099640b6ea48f9a973c102838e465943fa9e01d91ebf32bb2f12c77c1cd8",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "da599112b14c00ba62defa6cb919d0e22716c2a0b1a98d1b56a9afdcc6f56d94",
+    "release_sha256": "ee4cc10b991c9ae30403d2761ad60d2d6ad5a1474afa1faf37cf1239b785c23c"
+  },
+  {
+    "path": "publication_figs/figure_02_example_reach_date_filter.ipynb",
+    "source_sha256": "081946def0c93d5c1817f557a51e2957f018e1b5f86dacfbd0c2d4ccf07d747f",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "59c37dacf26840fc7b6a5f960c2a92d2b1453dbb28b7d5f8a94a197d7dbd77ae",
+    "release_sha256": "85e21c804e185633c8edfa231b2cac18e96a684e9a240705b492839b0e1b32d2"
+  },
+  {
+    "path": "publication_figs/figure_03_slope_repeatability_comparison.ipynb",
+    "source_sha256": "4ec7f76889b0cd26fd57113ab31eb02757cc085fb01a71986b2720cf0853f6a0",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "a801e09dd4e411e5f43f734f195cfcd65aa30d300b926839783f8f7e1930da39",
+    "release_sha256": "7c4316aff9513d8d99705d5658b434df9e8a1a27258cf6389d253ce4f4893870"
+  },
+  {
+    "path": "publication_figs/figure_04_negative_slope_recovery.ipynb",
+    "source_sha256": "b1aa90de9df78e82c9048bddb24fdc200049b546cfa6a579a89dc8f178ac6a6e",
+    "transformation": "notebook outputs/execution counts cleared; source cells unchanged; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "dbe24fff09de93e714c0a378d68db6a7f3b418b9599b27e000c3cf69a74e169a",
+    "release_sha256": "24ea5eb6119156f1bdbed6c6f720d3991a758ca9e72144dd0ce51983de468924"
+  },
+  {
+    "path": "manuscript/supporting_information/build_supporting_figures.py",
+    "source_sha256": "629be4631dd50c3e411e346049bdbbbab92e3adaa3a87e99baadb1948d29a3d7",
+    "transformation": "byte-identical copy; Git text line-ending normalization applied to archived blob",
+    "working_tree_sha256": "629be4631dd50c3e411e346049bdbbbab92e3adaa3a87e99baadb1948d29a3d7",
+    "release_sha256": "629be4631dd50c3e411e346049bdbbbab92e3adaa3a87e99baadb1948d29a3d7"
+  }
+]

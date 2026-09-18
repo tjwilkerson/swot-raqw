@@ -1,0 +1,50 @@
+{
+  "matched_table_sha256": "6013e48cba1e7115f34c173617e6f4920be401c6b419de96e5f63a61310edad4",
+  "notebooks": {
+    "figure_03_slope_repeatability_comparison.ipynb": {
+      "sha256": "a801e09dd4e411e5f43f734f195cfcd65aa30d300b926839783f8f7e1930da39",
+      "executed_cell_indices": [
+        1,
+        3,
+        4
+      ]
+    },
+    "figure_04_negative_slope_recovery.ipynb": {
+      "sha256": "dbe24fff09de93e714c0a378d68db6a7f3b418b9599b27e000c3cf69a74e169a",
+      "executed_cell_indices": [
+        2,
+        4,
+        5
+      ]
+    }
+  },
+  "common_observations": 7149,
+  "reaches": 347,
+  "median_rmse_m_per_km": {
+    "RiverSP slope": 0.11378405695147846,
+    "RiverSP slope2": 0.09837243097485035,
+    "Filtered PIXC": 0.08591091033824073
+  },
+  "sign_transition_counts": {
+    "RiverSP slope": [
+      [
+        63,
+        642
+      ],
+      [
+        239,
+        6205
+      ]
+    ],
+    "RiverSP slope2": [
+      [
+        69,
+        638
+      ],
+      [
+        233,
+        6209
+      ]
+    ]
+  }
+}
