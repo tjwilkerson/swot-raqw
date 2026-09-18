@@ -11,6 +11,19 @@ SWOT Pixel-Cloud Workflow Improves River Slope Usability at Scale*. It is design
 to keep acquisition, preprocessing, reference fitting, and application as
 separate, auditable stages.
 
+## Start here
+
+- **Reproduce the 2024 manuscript:** follow [the reproduction guide](docs/reproduce_2024.md).
+  The quickest check regenerates Figures 3 and 4 and their statistics from the
+  preserved matched observation table, without Earthdata credentials.
+- **Analyze a new reach:** use the Quick start or graphical interface below.
+  Keep the publication configuration unchanged when reproducing the paper.
+
+This checkout is being prepared for the manuscript `v1.0.0` release. A tag and
+Zenodo DOI have not yet been created. Validation status and limitations are in
+the reproduction guide; the version-pinned environment is not a guarantee of
+complete end-to-end equivalence to the historical run.
+
 ## Workflow
 
 ```text
@@ -34,7 +47,15 @@ RiverSP matching, comparison tables, figures, and provenance manifests
 
 ## Installation
 
-For exact reproduction, create the pinned Conda environment:
+Start with a source checkout so the manuscript scripts and notebooks are
+available:
+
+```bash
+git clone https://github.com/tjwilkerson/swot-raqw.git
+cd swot-raqw
+```
+
+Create the version-pinned Conda environment:
 
 ```bash
 conda env create -f environment.yml
@@ -262,10 +283,11 @@ provided in [docs/outputs.md](docs/outputs.md).
 
 ## Publication profile and the 50-point decision
 
-The tau-selection defaults reproduce the preserved 2024 results exactly. A
-read-only parity audit of representative observations matched saved tau bounds,
-scores, retained fractions, detrending slopes, and final slopes to floating-point
-precision.
+The publication settings match the saved 2024 run configuration. The release
+audit checks preserved-point refits and sampled window reselection, and records
+the scope and results explicitly. See [the reproduction guide](docs/reproduce_2024.md).
+Full raw-PIXC acquisition/preprocessing equivalence has not been established by
+these checks.
 
 The current archived output includes successful records with fewer than 50
 spatially screened pixels. Therefore the publication configuration leaves
