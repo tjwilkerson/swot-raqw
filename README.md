@@ -22,8 +22,8 @@ separate, auditable stages.
 Version `1.0.0` preserves the software and analysis sources for the 2024
 manuscript analysis. Validation status and known limitations are in the
 [reproduction guide](docs/reproduce_2024.md) and
-[release notes](docs/release_notes_v1.0.0.md). The software DOI will be added
-after Zenodo confirms archival publication. The version-pinned environment
+[release notes](docs/release_notes_v1.0.0.md). The version-specific software DOI is
+[10.5281/zenodo.23219871](https://doi.org/10.5281/zenodo.23219871). The version-pinned environment
 is not a guarantee of complete end-to-end equivalence to the historical run.
 
 ## Workflow
@@ -320,8 +320,10 @@ granules, or local output trees.
 
 Citation metadata are provided in [CITATION.cff](CITATION.cff). The source
 repository is [tjwilkerson/swot-raqw](https://github.com/tjwilkerson/swot-raqw).
-The software DOI and associated article DOI will be added after the archival
-release is created.
+Cite the frozen manuscript version using
+[10.5281/zenodo.23219871](https://doi.org/10.5281/zenodo.23219871).
+See [the archival release record](docs/archival_release.md) for the full citation
+and manuscript availability wording. The associated article DOI is not yet recorded.
 
 ## License
 
